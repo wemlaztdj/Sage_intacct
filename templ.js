@@ -20,8 +20,7 @@
 function addAllocations(type) {
     var rowCount = jq("#tbody__obj__ENTRIES tr").length;
     var headerproject= jq('#_obj__PROJECT')
-    var allocationcount =0
-    var linecount=0
+
     var allocationarray=[]
     var linearray=[]
     
@@ -34,7 +33,7 @@ function addAllocations(type) {
           }elseif(jq(itemid).val()!=''&&jq(projectid).val()!=''){
             linearray.push(i)
           }
-          switch (allocationcount) {
+          switch (allocationarray.length) {
   					case 0:
     // do something
                     for (let i=0;i<rowCount;i++){
@@ -63,9 +62,13 @@ function addAllocations(type) {
               
   					case 1:
     // do something else
+                        for (let i = 0; i < array.length; i++) {
+        // do something with array[i]
+                            }
+                            
     					break;
               
-            case linecount:
+            case linearray.length:
     // do something if none of the cases match
     					break;
               
