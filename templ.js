@@ -56,15 +56,57 @@ function addAllocations(type) {
                             jq(department).val('')
                             jq(classid).val('')
                             jq(projectid).val('')
+                            jq(allocation).val(jq('#_obj__ALLOCATIONS_FOR_INVOICES').val())
                         }
                     }
     					break;
               
   					case 1:
     // do something else
-                        for (let i = 0; i < array.length; i++) {
-        // do something with array[i]
+                    var theamount=0
+                        for (let i = 0; i < linearray.length; i++) {
+                          var itemid='#_obj__ENTRIES_'+i+'_-_obj__ITEMID';
+                          var qty='#_obj__ENTRIES_'+i+'_-_obj__UIQTY';
+                          var allocation='#_obj__ENTRIES_'+i+'_-_obj__ALLOCATION';
+                          var price='#_obj__ENTRIES_'+i+'_-_obj__UIPRICE';
+                          var value='#_obj__ENTRIES_'+i+'_-_obj__UIVALUE';
+              
+                          var location='#_obj__ENTRIES_'+i+'_-_obj__LOCATION';
+                          var department='#_obj__ENTRIES_'+i+'_-_obj__DEPARTMENT';
+                          var classid='#_obj__ENTRIES_'+i+'_-_obj__CLASSID';
+                          var projectid='#_obj__ENTRIES_'+i+'_-_obj__PROJECTID';
+                          
+                          if (jq(itemid).val()!='') {
+                            theamount=theamount+jq(value).val()
+                                                        
+                            jq(price).val(0)
+
+                          }
+                        }
+                        for (let i = 0; i < allocationarray.length; i++) {
+                          var itemid='#_obj__ENTRIES_'+i+'_-_obj__ITEMID';
+                          var qty='#_obj__ENTRIES_'+i+'_-_obj__UIQTY';                           
+                          var allocation='#_obj__ENTRIES_'+i+'_-_obj__ALLOCATION';
+                          var price='#_obj__ENTRIES_'+i+'_-_obj__UIPRICE';
+
+                          var location='#_obj__ENTRIES_'+i+'_-_obj__LOCATION';
+                          var department='#_obj__ENTRIES_'+i+'_-_obj__DEPARTMENT';
+                          var classid='#_obj__ENTRIES_'+i+'_-_obj__CLASSID';
+                          var projectid='#_obj__ENTRIES_'+i+'_-_obj__PROJECTID';
+                              
+                          if (jq(itemid).val()!='') {
+                            jq(location).val('')
+                            jq(department).val('')
+                            jq(classid).val('')
+                            jq(projectid).val('')
+                                                        
+                            jq(price).val(theamount)
+                            jq(qty).val(1)
+                            jq(allocation).val(jq('#_obj__ALLOCATIONS_FOR_INVOICES').val())
+                          }
+
                             }
+                          
                             
     					break;
               
